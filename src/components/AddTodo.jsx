@@ -1,7 +1,10 @@
-import { useState} from 'react'
+import { useState, useContext} from 'react'
 import '../App.css'
+import { Context } from '../context/context'
 
-export default function AddTodo({addTask}){
+export default function AddTodo(){
+
+    const{addTask} = useContext(Context)
 
     const[title, setTitle] = useState("")
     const[text, setText] = useState("")
