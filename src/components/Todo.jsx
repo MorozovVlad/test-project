@@ -12,14 +12,14 @@ export default function Todo(){
 
     return(
         <>
-            <div className='todo-class'>
+            <div className=''>
+                <AddTodo/>
                 <div className='tasks'>
                     {tasks.map(task => {
                             return <TodoItem key={task.id} time={task.time}  title={task.title} text={task.text} id={task.id}/>
                         }
                     )}
                 </div>
-                <AddTodo/>
             </div>
         </>
     )

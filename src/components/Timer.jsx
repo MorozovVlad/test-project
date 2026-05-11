@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef, createContext, useContext } from 'react'
 import '../App.css'
+import { Context } from '../context/context'
 
-export default function Timer ({time}){
+export default function Timer ({time, title}){
       const[timer, setTimer] = useState(time)
       const[stateTime, setStateTime] = useState(2)
-      useEffect( ()=>{
+      const{selectTask} = useContext(Context)
 
-        
-
+      useEffect(()=>{
         if(stateTime == 2) return
         if(stateTime==true){
           const interval = setInterval(()=>{
@@ -33,9 +33,6 @@ export default function Timer ({time}){
                 sek="0"+sek
             }
             time = min + ":" + sek
-
-            console.log("время после - 1 " + time)
-
             setTimer(
                 time
             )
@@ -45,11 +42,13 @@ export default function Timer ({time}){
       }, [stateTime])
     
       return (
-        <div className='timer'>
-          <h1 style={stateTime===true ? {color:'green'} : stateTime===false ? {color:"red"}: {color:'black'}}>{timer}</h1>
-          <button onClick={()=>setStateTime(true)}>Start</button>
-          <button onClick={()=>setStateTime(false)}>Stop</button>
-          <button onClick={()=>{setTimer(0), setStateTime(2)}}>Reset</button>
+        <div className='bg-cyan-800 rounded-lg p-2'>
+          <h1 className='text-3xl text-center' style={stateTime===true ? {color:'oklch(84.1% 0.238 128.85)'} : stateTime===false ? {color:"red"}: {color:'black'}}>{timer}</h1>
+          <div className='flex justify-center mt-2.5'>
+            <button className='bg-green-600 text-white rounded-lg p-0.5 px-5 text-lg mr-4.5 cursor-pointer hover:bg-green-500' onClick={()=>{setStateTime(true), selectTask(title)}}>Start</button>
+            <button className='bg-red-800 text-white rounded-lg p-0ю5 px-5 text-lg cursor-pointer hover:bg-red-700' onClick={()=>setStateTime(false)}>Stop</button>
+          </div>
+          {/* <button onClick={()=>{setTimer(0), setStateTime(2)}}>Reset</button> */}
         </div>
       )
 }
