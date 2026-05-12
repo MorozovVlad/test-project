@@ -7,7 +7,7 @@ import { Context } from './context/context'
 function App() {
 
   const[tasks, setTasks] = useState([])
-  const[selectedTask, setSelectedTask] = useState("")
+  const[selectedTask, setSelectedTask] = useState({title:"", time:"", isStart: false})
 
   function addTask(title, text, time){
       const id = new Date()
@@ -18,18 +18,14 @@ function App() {
   function removeTask(idRemove){
     setTasks((prev)=>prev.filter((task, id)=> task.id!=idRemove))
   }
-
-  function selectTask(title){
-    console.log("задача записана в выполнение" + title)
-    setSelectedTask(title)
-  }   
+ 
 
   return (
     <Context.Provider value={{
       addTask,
       removeTask,
       tasks,
-      selectTask,
+      setSelectedTask,
       selectedTask
     }}>
       <Header selectedTask={selectedTask}/>

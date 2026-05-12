@@ -1,9 +1,10 @@
 import '../App.css'
 
 export default function Header({selectedTask}){
+    const {title, time, isStart} = selectedTask
     return(
         <>
-            {selectedTask ? <header className='text-white' style={{fontFamily:"Helvetica"}}>Сейчас выполняется: {selectedTask}</header> :  <header className='text-white' style={{fontFamily:"Helvetica"}}>Задачи не выбраны</header>}
+            {isStart ? <header className='text-white' style={{fontFamily:"Helvetica"}}>Сейчас выполняется: {title} оставшееся время {time}</header> :  <header className='text-white' style={{fontFamily:"Helvetica"}}>Задачи не выбраны</header>}
         </>
     )
 }
