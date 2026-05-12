@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Header from './components/Header'
-import Timer from './components/Timer'
 import Todo from './components/Todo'
 import { Context } from './context/context'
 
