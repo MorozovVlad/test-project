@@ -8,10 +8,10 @@ function App() {
   const[tasks, setTasks] = useState([])
   const[selectedTask, setSelectedTask] = useState({title:"", time:"", isStart: false})
 
-  // useEffect(()=>{
-  //   const tasksLocal = localStorage.getItem('tasks')
-  //   setTasks(tasksLocal)
-  // }, [])
+  useEffect(()=>{
+    const tasksLocal = JSON.parse(localStorage.getItem('tasks'))
+    setTasks(tasksLocal)
+  }, [])
 
   function addTask(title, text, time){
       const id = Date.now()
@@ -28,6 +28,10 @@ function App() {
 
   function removeTask(idRemove){
     setTasks((prev)=>prev.filter((task, id)=> task.id!=idRemove))
+
+    let arr = JSON.parse(localStorage.getItem('tasks')) || []
+    arr = arr.filter((task, id)=> task.id!=idRemove)
+    localStorage.setItem("tasks", JSON.stringify(arr));
   }
  
 
