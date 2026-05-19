@@ -9,8 +9,8 @@ function App() {
   const[selectedTask, setSelectedTask] = useState({title:"", time:"", isStart: false})
 
   useEffect(()=>{
-    const tasksLocal = JSON.parse(localStorage.getItem('tasks'))
-    setTasks(tasksLocal)
+    const tasksLocal = JSON.parse(localStorage.getItem('tasks')) 
+    setTasks(tasksLocal ?? [])
   }, [])
 
   function addTask(title, text, time){

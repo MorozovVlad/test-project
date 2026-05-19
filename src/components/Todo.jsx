@@ -22,7 +22,7 @@ export default function Todo(){
                     {isOpenTask ? <TodoItem setIsOpenTask={setIsOpenTask} time={isOpenTask.time}  title={isOpenTask.title} text={isOpenTask.text} id={isOpenTask.id}/> : <p></p>}
                 </div> 
                 <div className='tasks'>
-                    {tasks.length > 0 ? tasks.map(task => {
+                    {tasks && tasks.length > 0 ? tasks.map(task => {
                             return <TodoItemList isOpenTask={isOpenTask} setIsOpenTask={setIsOpenTask} key={task.id} time={task.time}  title={task.title} text={task.text} id={task.id}/>
                         }
                     ) : <NoTasks/>}
